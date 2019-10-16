@@ -1,6 +1,8 @@
 package com.company;
 
-abstract class LibraryItem {
+import java.io.Serializable;
+
+abstract class LibraryItem implements Serializable {
     String id;
     String title;
     String date;

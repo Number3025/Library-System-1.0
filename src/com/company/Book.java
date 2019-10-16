@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Book extends LibraryItem implements Add, Remove, Comparable<Book> {
+public class Book extends LibraryItem implements Add, Remove, Comparable<Book>, Serializable {
     Book(String title, String date, String id, String author) {
         super(id, title, date, author);
         this.id = id;

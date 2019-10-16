@@ -1,6 +1,8 @@
 package com.company;
 
-public class AudioBook extends LibraryItem implements Add, Remove, Comparable<AudioBook> {
+import java.io.Serializable;
+
+public class AudioBook extends LibraryItem implements Add, Remove, Comparable<AudioBook>, Serializable {
     AudioBook(String title, String date, String id, String author) {
         super(id, title, date, author);
         this.id = id;

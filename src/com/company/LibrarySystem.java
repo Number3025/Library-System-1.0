@@ -1,5 +1,9 @@
 package com.company;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,12 +19,14 @@ public class LibrarySystem {
             SortAudioBookTitle();
     static SortAudioBookAuthors sortAudioBookAuthors = new
             SortAudioBookAuthors();
+
     public static ArrayList<Book> books = new ArrayList<>();
     static SortBookTitle sortBookTitle = new
             SortBookTitle();
     static SortBookAuthors sortBookAuthors = new
             SortBookAuthors();
-    static String[] helps = {"Please Choose one option", "If you want to add a book press 1", "If you want to add a Audiobook press 2", "If you want to see all books Currently in press 3", "If you want to see all Audiobooks Currently in press 4", "To Exit the program press 6"};
+
+    static String[] helps = {"Please Choose one option", "If you want to add a book press 1", "If you want to add a Audiobook press 2", "If you want to see all books Currently in press 3", "If you want to see all Audiobooks Currently in press 4", "if you want to remove a book or audiobook press 6", "if Want to sort the books in specific way press 7", "if Want to sort the audibooks in specific way press 8","if you want to save all books into the SaveData Press 9","if you want to save all audiobooks into the SaveData Press 10", "If you want to Load the Savedata for all Books press 11", "If you want to Load the Savedata for all audioBooks press 12", "To Exit the program press 13"};
 
 
     private String nameOfSchool = "";
@@ -34,6 +40,83 @@ public class LibrarySystem {
         books.add(new Book("The Happiness equation ", "2015-03-31 ", "0399169474 ", "Nail Pasricha "));
         books.add(new Book("The Name of the wind ", "2007-03-27 ", "075640407 ", "Patrick Rothfuss "));
         Collections.sort(books, sortBookTitle);
+
+    }
+
+    public static ArrayList<Book> readObjects(ArrayList<Book> fileName) {
+        ObjectInputStream objectinputstream = null;
+        ArrayList<Book> list = null;
+        try {
+            FileInputStream streamIn = new FileInputStream("BookList.ser");
+            objectinputstream = new ObjectInputStream(streamIn);
+            books = (ArrayList<Book>) objectinputstream.readObject();
+            objectinputstream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
+
+    public static ArrayList<AudioBook> readObjectss(ArrayList<AudioBook> audiobooks) {
+        ObjectInputStream objectinputstream = null;
+        ArrayList<AudioBook> list  = null;
+        try {
+            FileInputStream streamIn = new FileInputStream("AudioBookList.ser");
+            objectinputstream = new ObjectInputStream(streamIn);
+            audiobooks = (ArrayList<AudioBook>) objectinputstream.readObject();
+            objectinputstream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return audiobooks;
+    }
+
+
+    public static void writeObjects(ArrayList<Book> books) {
+
+        ObjectOutputStream objectOutputStream = null;
+
+        FileOutputStream fileOutputStream = null;
+
+        try {
+
+            fileOutputStream = new FileOutputStream("BookList.ser", false);
+
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(books);
+
+            objectOutputStream.close();
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+
+        }
+
+    }
+
+    public static void writeObjectss(ArrayList<AudioBook> audioBooks) {
+
+        ObjectOutputStream objectOutputStream = null;
+
+        FileOutputStream fileOutputStream = null;
+
+        try {
+
+            fileOutputStream = new FileOutputStream("AudioBookList.ser", false);
+
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(audioBooks);
+
+            objectOutputStream.close();
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+
+        }
 
     }
 
@@ -63,11 +146,11 @@ public class LibrarySystem {
 
                     + "\n9: Save Booklist "
 
-                    + "\n10: save AudioBooklist "
+                    + "\n10: Save AudioBooklist "
 
-                    + "\n11: read Booklist "
+                    + "\n11: Read Booklist "
 
-                    + "\n12: read AudioBooklist "
+                    + "\n12: Read AudioBooklist "
 
                     + "\n13: Exit Program");
 
@@ -77,7 +160,7 @@ public class LibrarySystem {
 
 
                 case "1":
-                    System.out.println("Please Enter Name,Date and Id for Book");
+                    System.out.println("Please Enter Name,Date,Id and Author for Book");
                     Scanner scanners = new Scanner(System.in);
                     String bookName = scanners.nextLine();
                     String bookDate = scanners.nextLine();
@@ -88,7 +171,7 @@ public class LibrarySystem {
                     break;
 
                 case "2":
-                    System.out.println("Please Enter Name,Date and Id for AudioBook ");
+                    System.out.println("Please Enter Name,Date,Id and Author for AudioBook ");
                     Scanner scannert = new Scanner(System.in);
                     String audioBookName = scannert.nextLine();
                     String audioBookDate = scannert.nextLine();
@@ -209,79 +292,20 @@ public class LibrarySystem {
                     break;
 
                 case "9":
-                    //Write some lines to a
-                    List<String> lines = new ArrayList<>();
-                    for (Book book : books) {
-                        lines.add(book.title + book.date + book.id + book.author);
-
-
-                        try {
-                            Path path = Paths.get("./Booklist");
-                            Files.write(path, lines, StandardCharsets.UTF_8);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    writeObjects(books);
                     break;
 
                 case "10":
-                    //Write some lines to a file
-                    List<String> linesss = new ArrayList<>();
-                    for (AudioBook audioBook : audiobooks) {
-                        linesss.add(audioBook.title + audioBook.date + audioBook.id + audioBook.author);
-
-
-                        try {
-                            Path path = Paths.get("./AudioBookList");
-                            Files.write(path, linesss, StandardCharsets.UTF_8);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    writeObjectss(audiobooks);
                     break;
 
 
                 case "11":
-
-
-                    String bookListName = "BookList";
-
-                    try {
-
-                        List<String> liness = Files.readAllLines(Paths.get(bookListName));
-
-                        for (String line : liness) {
-
-                            System.out.println(line);
-
-                        }
-
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
-
-                    }
-
+                    readObjects(books);
                     break;
                 case "12":
 
-                    String audioBookListname = "AudioBookList";
-
-                    try {
-
-                        List<String> liness = Files.readAllLines(Paths.get(audioBookListname));
-
-                        for (String line : liness) {
-
-                            System.out.println(line);
-
-                        }
-
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
-
-                    }
+                    readObjectss(audiobooks);
                     break;
 
                 case "13":
