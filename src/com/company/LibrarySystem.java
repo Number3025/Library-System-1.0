@@ -26,19 +26,19 @@ public class LibrarySystem {
     static SortBookAuthors sortBookAuthors = new
             SortBookAuthors();
 
-    static String[] helps = {"Please Choose one option", "If you want to add a book press 1", "If you want to add a Audiobook press 2", "If you want to see all books Currently in press 3", "If you want to see all Audiobooks Currently in press 4", "if you want to remove a book or audiobook press 6", "if Want to sort the books in specific way press 7", "if Want to sort the audibooks in specific way press 8","if you want to save all books into the SaveData Press 9","if you want to save all audiobooks into the SaveData Press 10", "If you want to Load the Savedata for all Books press 11", "If you want to Load the Savedata for all audioBooks press 12", "To Exit the program press 13"};
+    static String[] helps = {"Please Choose one option", "If you want to add a book press 1", "If you want to add a Audiobook press 2", "If you want to see all books Currently in press 3", "If you want to see all Audiobooks Currently in press 4", "if you want to remove a book or audiobook press 6", "if Want to sort the books in specific way press 7", "if Want to sort the audibooks in specific way press 8", "if you want to save all books into the SaveData Press 9", "if you want to save all audiobooks into the SaveData Press 10", "If you want to Load the Savedata for all Books press 11", "If you want to Load the Savedata for all audioBooks press 12", "To Exit the program press 13"};
 
 
     private String nameOfSchool = "";
 
     public LibrarySystem(String nameOfSchool) {
         this.nameOfSchool = nameOfSchool;
-        audiobooks.add(new AudioBook("Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future  ", "2015-03-3 ", "0062301233 ", "Ashlee Vance"));
-        audiobooks.add(new AudioBook("Never Split the Difference: Negotiating As If Your Life Depended On It ", "2016-05-17 ", "0062407805 ", "Chris Voss"));
+        audiobooks.add(new AudioBook("Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", "2015-03-3", "0062301233", "Ashlee Vance"));
+        audiobooks.add(new AudioBook("Never Split the Difference: Negotiating As If Your Life Depended On It", "2016-05-17", "0062407805", "Chris Voss"));
         Collections.sort(audiobooks, sortAudioBookTitle);
-        books.add(new Book("Deep Work ", "2016-01-05 ", "1455586692 ", "Cal Newport "));
-        books.add(new Book("The Happiness equation ", "2015-03-31 ", "0399169474 ", "Nail Pasricha "));
-        books.add(new Book("The Name of the wind ", "2007-03-27 ", "075640407 ", "Patrick Rothfuss "));
+        books.add(new Book("Deep Work", "2016-01-05", "1455586692", "Cal Newport"));
+        books.add(new Book("The Happiness equation", "2015-03-31", "0399169474", "Nail Pasricha"));
+        books.add(new Book("The Name of the wind", "2007-03-27", "075640407", "Patrick Rothfuss"));
         Collections.sort(books, sortBookTitle);
 
     }
@@ -59,7 +59,7 @@ public class LibrarySystem {
 
     public static ArrayList<AudioBook> readObjectss(ArrayList<AudioBook> audiobooks) {
         ObjectInputStream objectinputstream = null;
-        ArrayList<AudioBook> list  = null;
+        ArrayList<AudioBook> list = null;
         try {
             FileInputStream streamIn = new FileInputStream("AudioBookList.ser");
             objectinputstream = new ObjectInputStream(streamIn);
@@ -120,6 +120,7 @@ public class LibrarySystem {
 
     }
 
+
     public static void showMainMenu(String nameOfLibrary) {
         System.out.println("welcome to " + nameOfLibrary);
         Scanner scanner = new Scanner(System.in);
@@ -160,22 +161,28 @@ public class LibrarySystem {
 
 
                 case "1":
-                    System.out.println("Please Enter Name,Date,Id and Author for Book");
+                    System.out.println("Please Enter Name");
                     Scanner scanners = new Scanner(System.in);
                     String bookName = scanners.nextLine();
+                    System.out.println("Please Enter Date");
                     String bookDate = scanners.nextLine();
+                    System.out.println("Please Enter Id");
                     String bookId = scanners.nextLine();
+                    System.out.println("Please Enter Author");
                     String bookAuthor = scanners.nextLine();
                     LibrarySystem.books.add(new Book(bookName, bookDate, bookId, bookAuthor));
                     Collections.sort(books, sortBookTitle);
                     break;
 
                 case "2":
-                    System.out.println("Please Enter Name,Date,Id and Author for AudioBook ");
+                    System.out.println("Please Enter Name");
                     Scanner scannert = new Scanner(System.in);
                     String audioBookName = scannert.nextLine();
+                    System.out.println("Please Enter Date");
                     String audioBookDate = scannert.nextLine();
+                    System.out.println("Please Enter Id");
                     String audiobookId = scannert.nextLine();
+                    System.out.println("Please Enter Author");
                     String audiobookAuthor = scannert.nextLine();
                     LibrarySystem.audiobooks.add(new AudioBook(audioBookName, audioBookDate, audiobookId, audiobookAuthor));
                     Collections.sort(audiobooks, sortAudioBookTitle);
@@ -184,14 +191,14 @@ public class LibrarySystem {
 
                 case "3":
                     for (Book book : books) {
-                        System.out.println(book.title + book.date + book.id + book.author);
+                        System.out.println("Title: " + book.title + " " + "Date: " + book.date + " " + "Id: " + book.id + " " + "Author: " + book.author);
                     }
                     break;
 
 
                 case "4":
                     for (AudioBook audioBook : audiobooks) {
-                        System.out.println(audioBook.title + audioBook.date + audioBook.id + audioBook.author);
+                        System.out.println("Title: " + audioBook.title + " " + "Date: " + audioBook.date + " " + "Id: " + audioBook.id + " " + "Author: " + audioBook.author);
                     }
                     break;
 
@@ -304,9 +311,9 @@ public class LibrarySystem {
                     readObjects(books);
                     break;
                 case "12":
-
                     readObjectss(audiobooks);
                     break;
+
 
                 case "13":
                     System.out.println("Exiting Program");
