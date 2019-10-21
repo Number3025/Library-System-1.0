@@ -31,6 +31,9 @@ public class LibrarySystem {
 
     private String nameOfSchool = "";
 
+    /**
+     * @param nameOfSchool The name of the Library is given here
+     */
     public LibrarySystem(String nameOfSchool) {
         this.nameOfSchool = nameOfSchool;
         audiobooks.add(new AudioBook("Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", "2015-03-3", "0062301233", "Ashlee Vance"));
@@ -71,7 +74,9 @@ public class LibrarySystem {
         return audiobooks;
     }
 
-
+    /**
+     * @param books A method writes all books in arraylist to Booklist.ser file
+     */
     public static void writeObjects(ArrayList<Book> books) {
 
         ObjectOutputStream objectOutputStream = null;
@@ -96,6 +101,9 @@ public class LibrarySystem {
 
     }
 
+    /**
+     * @param audioBooks A method writes all Audiobooks in arraylist to AudioBooklist.ser file
+     */
     public static void writeObjectss(ArrayList<AudioBook> audioBooks) {
 
         ObjectOutputStream objectOutputStream = null;
@@ -120,7 +128,9 @@ public class LibrarySystem {
 
     }
 
-
+    /**
+     * @param nameOfLibrary a method that works by getting variable name from the main class
+     */
     public static void showMainMenu(String nameOfLibrary) {
         System.out.println("welcome to " + nameOfLibrary);
         Scanner scanner = new Scanner(System.in);

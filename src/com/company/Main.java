@@ -9,9 +9,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-
-        LibrarySystem schoolProgram = new LibrarySystem("The Archive");
+        LibrarySystem LibraryProgram = new LibrarySystem("The Archive");
 
         LibrarySystem.showMainMenu("The Archive");
 
