@@ -1,5 +1,7 @@
 package com.company;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -10,22 +12,29 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-
+/**
+ * LibrarySystem this the class that runs the LibrarySystem
+ */
 public class LibrarySystem {
-
-
+    /**
+     * This is List of the books in the library it can be sorted alphabetical in either book name or author name
+     */
     public static ArrayList<AudioBook> audiobooks = new ArrayList<>();
     static SortAudioBookTitle sortAudioBookTitle = new
             SortAudioBookTitle();
     static SortAudioBookAuthors sortAudioBookAuthors = new
             SortAudioBookAuthors();
-
+    /**
+     * This is List of the Audiobooks in the library it can be sorted alphabetical in either book name or author name
+     */
     public static ArrayList<Book> books = new ArrayList<>();
     static SortBookTitle sortBookTitle = new
             SortBookTitle();
     static SortBookAuthors sortBookAuthors = new
             SortBookAuthors();
-
+    /**
+     * A help menu for understanding the menu options better
+     */
     static String[] helps = {"Please Choose one option", "If you want to add a book press 1", "If you want to add a Audiobook press 2", "If you want to see all books Currently in press 3", "If you want to see all Audiobooks Currently in press 4", "if you want to remove a book or audiobook press 6", "if Want to sort the books in specific way press 7", "if Want to sort the audibooks in specific way press 8", "if you want to save all books into the SaveData Press 9", "if you want to save all audiobooks into the SaveData Press 10", "If you want to Load the Savedata for all Books press 11", "If you want to Load the Savedata for all audioBooks press 12", "To Exit the program press 13"};
 
 
@@ -46,6 +55,10 @@ public class LibrarySystem {
 
     }
 
+    /**
+     *
+     * @return Returns the books that have been taken from the online Booklist
+     */
     public static ArrayList<Book> readObjects(ArrayList<Book> fileName) {
         ObjectInputStream objectinputstream = null;
         ArrayList<Book> list = null;
@@ -60,6 +73,9 @@ public class LibrarySystem {
         return books;
     }
 
+    /**
+     * @return Returns the Audiobooks that have been taken from the online AudioBooklist
+     */
     public static ArrayList<AudioBook> readObjectss(ArrayList<AudioBook> audiobooks) {
         ObjectInputStream objectinputstream = null;
         ArrayList<AudioBook> list = null;
