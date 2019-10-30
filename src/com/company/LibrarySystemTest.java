@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LibrarySystemTest {
 
+    public ArrayList<Book> books = LibrarySystem.getBooks();
+    public ArrayList<AudioBook> audioBooks = LibrarySystem.getAudiobooks();
     @org.junit.jupiter.api.Test
     void readObjects() {
 
@@ -18,13 +20,13 @@ class LibrarySystemTest {
 
     @org.junit.jupiter.api.Test
     void writeObjects() {
-        ArrayList<Book> books = new ArrayList<>();
+
         assertNotNull(books);
     }
 
     @org.junit.jupiter.api.Test
     void writeObjectss() {
-        ArrayList<AudioBook> audioBooks = new ArrayList<>();
+
         assertNotNull(audioBooks);
     }
 

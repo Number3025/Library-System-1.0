@@ -4,55 +4,32 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 
-public class Book extends LibraryItem implements Add, Remove, Comparable<Book>, Serializable {
-    Book(String title, String date, String id, String author) {
+public class Book extends LibraryItem implements Comparable<Book>, Serializable {
+    private int numberOfpages;
+    Book(String title, String date, String id, String author, int numberOfpages) {
         super(id, title, date, author);
-        this.id = id;
-        this.author = author;
-        this.date = date;
-        this.title = title;
-
+        this.setId(id);
+        this.setAuthor(author);
+        this.setDate(date);
+        this.setTitle(title);
+        this.numberOfpages = numberOfpages;
     }
+
+    public int getNumberOfpages(){
+        return numberOfpages;
+    }
+
+
+    //public void setNumberOfpages(int numberOfpages){
+      //  this.numberOfpages = numberOfpages;
+    //}
 
 
 
     public int compareTo(Book otherBook) {
-        return author.compareTo(otherBook.author);
+        return getAuthor().compareTo(otherBook.getAuthor());
     }
 
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
 
     @Override
@@ -61,15 +38,7 @@ public class Book extends LibraryItem implements Add, Remove, Comparable<Book>, 
         return;
     }
 
-    @Override
-    public void Add() {
 
-    }
-
-    @Override
-    public void remove() {
-
-    }
 }
 
 

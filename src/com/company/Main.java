@@ -9,9 +9,14 @@ public class Main {
 
 
     public static void main(String[] args) {
-        LibrarySystem LibraryProgram = new LibrarySystem("The Archive");
 
-        LibrarySystem.showMainMenu("The Archive");
+        BooksRealaseDateList booksRealaseDateList = new BooksRealaseDateList();
+
+        booksRealaseDateList.AddBooksToList();
+
+        LibrarySystem librarySystem = new LibrarySystem("The archive");
+
+        librarySystem.showMainMenu("The Archive");
 
 
     }
