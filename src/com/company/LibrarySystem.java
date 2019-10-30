@@ -50,7 +50,7 @@ public class LibrarySystem {
      */
     public LibrarySystem(String nameOfSchool) {
         this.nameOfSchool = nameOfSchool;
-        audiobooks.add(new AudioBook("Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", "2015-03-3", "0062301233", "Ashlee Vance",803 ));
+        audiobooks.add(new AudioBook("Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", "2015-03-3", "0062301233", "Ashlee Vance", 803));
         audiobooks.add(new AudioBook("Never Split the Difference: Negotiating As If Your Life Depended On It", "2016-05-17", "0062407805", "Chris Voss", 487));
         Collections.sort(audiobooks, sortAudioBookTitle);
         books.add(new Book("Deep Work", "2016-01-05", "1455586692", "Cal Newport", 304));
@@ -242,22 +242,24 @@ public class LibrarySystem {
  * Shows all Book objects in the arraylist
  */
                 case "3":
-                    for (Book book : books) {
-                        System.out.println("Title: " + book.getTitle() + " " + "Date: " + book.getDate() + " " + "Id: " + book.getId() + " " + "Author: " + book.getAuthor() + " " + "Pages: " + book.getNumberOfpages());
-                    }
+                    Book book = new Book("", "", "", "", 1);
+                    book.PrintInfo();
+                    //System.out.println("Title: " + book.getTitle() + " " + "Date: " + book.getDate() + " " + "Id: " + book.getId() + " " + "Author: " + book.getAuthor() + " " + "Pages: " + book.getNumberOfpages());
+
                     break;
 
 /**
  * shows all AudioBooks in the arraylist
  */
                 case "4":
-                    for (AudioBook audioBook : audiobooks) {
-                        System.out.println("Title: " + audioBook.getTitle() + " " + "Date: " + audioBook.getDate() + " " + "Id: " + audioBook.getId() + " " + "Author: " + audioBook.getAuthor() + " " + "Minutes: " + audioBook.getLengthMinutes());
-                    }
+                    AudioBook audioBook = new AudioBook("", "", "", "", 1);
+                    audioBook.PrintInfo();
+                    //System.out.println("Title: " + audioBook.getTitle() + " " + "Date: " + audioBook.getDate() + " " + "Id: " + audioBook.getId() + " " + "Author: " + audioBook.getAuthor() + " " + "Minutes: " + audioBook.getLengthMinutes());
+
                     break;
                 case "5":
-                    for (Book book : notrealisedbookList) {
-                        System.out.println("Title: " + book.getTitle() + " " + "Date: " + book.getDate() + " " + "Id: " + book.getId() + " " + "Author: " + book.getAuthor() + " " + "Pages: " + book.getNumberOfpages());
+                    for (Book book1 : notrealisedbookList) {
+                        System.out.println("Title: " + book1.getTitle() + " " + "Date: " + book1.getDate() + " " + "Id: " + book1.getId() + " " + "Author: " + book1.getAuthor() + " " + "Pages: " + book1.getNumberOfpages());
                     }
                     break;
 /**
@@ -285,8 +287,8 @@ public class LibrarySystem {
                                 break;
                             } else {
                                 System.out.println("please choice which book to remove");
-                                for (Book book : books) {
-                                    System.out.println("Title: " + book.getTitle() + " " + "Date: " + book.getDate() + " " + "Id: " + book.getId() + " " + "Author: " + book.getAuthor());
+                                for (Book book2 : books) {
+                                    System.out.println("Title: " + book2.getTitle() + " " + "Date: " + book2.getDate() + " " + "Id: " + book2.getId() + " " + "Author: " + book2.getAuthor() + " " + "Pages: " + book2.getNumberOfpages());
                                 }
                                 Scanner bookRe = new Scanner(System.in);
                                 int bookre = scanner.nextInt();
@@ -301,8 +303,8 @@ public class LibrarySystem {
                                 break;
                             } else {
                                 System.out.println("please choice which Audiobook to remove");
-                                for (AudioBook audioBook : audiobooks) {
-                                    System.out.println("Title: " + audioBook.getTitle() + " " + "Date: " + audioBook.getDate() + " " + "Id: " + audioBook.getId() + " " + "Author: " + audioBook.getAuthor());
+                                for (AudioBook audioBook1 : audiobooks) {
+                                    System.out.println("Title: " + audioBook1.getTitle() + " " + "Date: " + audioBook1.getDate() + " " + "Id: " + audioBook1.getId() + " " + "Author: " + audioBook1.getAuthor() + " " + "Minutes: " + audioBook1.getLengthMinutes());
                                 }
                                 Scanner audioBookRe = new Scanner(System.in);
                                 int audioBookre = scanner.nextInt();

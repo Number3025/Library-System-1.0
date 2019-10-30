@@ -15,8 +15,6 @@ public class BooksRealaseDateList {
     }
 
 
-
-
     public static ArrayList<Book> getNotRealisedBookList() {
         return notrealisedbookList;
     }

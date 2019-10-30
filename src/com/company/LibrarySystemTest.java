@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibrarySystemTest {
+    LibrarySystem librarySystem = new LibrarySystem("The archive");
 
-    public ArrayList<Book> books = LibrarySystem.getBooks();
-    public ArrayList<AudioBook> audioBooks = LibrarySystem.getAudiobooks();
     @org.junit.jupiter.api.Test
     void readObjects() {
 
@@ -20,14 +19,14 @@ class LibrarySystemTest {
 
     @org.junit.jupiter.api.Test
     void writeObjects() {
-
-        assertNotNull(books);
+        ArrayList<Book> books = LibrarySystem.getBooks();
+        assertFalse(books.isEmpty());
     }
 
     @org.junit.jupiter.api.Test
     void writeObjectss() {
-
-        assertNotNull(audioBooks);
+        ArrayList<AudioBook> audioBooks = LibrarySystem.getAudiobooks();
+        assertFalse(audioBooks.isEmpty());
     }
 
     @org.junit.jupiter.api.Test

@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class AudioBook extends LibraryItem implements Comparable<AudioBook>, Serializable {
     private float lengthMinutes;
@@ -23,11 +24,14 @@ public class AudioBook extends LibraryItem implements Comparable<AudioBook>, Ser
         return getAuthor().compareTo(otherAudioBook.getAuthor());
     }
 
+
     @Override
-    void displayGreetingMessage() {
-        System.out.println("What Audiobook too add Master?");
-        return;
+    void PrintInfo() {
+        ArrayList<AudioBook> audioBooks = LibrarySystem.getAudiobooks();
+        for (AudioBook audioBook : audioBooks) {
+            System.out.println("Title: " + audioBook.getTitle() + " " + "Date: " + audioBook.getDate() + " " + "Id: " + audioBook.getId() + " " + "Author: " + audioBook.getAuthor() + " " + "Minutes: " + audioBook.getLengthMinutes());
     }
+}
 
 
 }

@@ -56,7 +56,7 @@ abstract class LibraryItem implements Serializable {
         this.title = title;
     }
 
-    abstract void displayGreetingMessage();
+    abstract void PrintInfo();
 
 
 }
