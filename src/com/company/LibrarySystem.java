@@ -257,16 +257,19 @@ public class LibrarySystem {
                     //System.out.println("Title: " + audioBook.getTitle() + " " + "Date: " + audioBook.getDate() + " " + "Id: " + audioBook.getId() + " " + "Author: " + audioBook.getAuthor() + " " + "Minutes: " + audioBook.getLengthMinutes());
 
                     break;
+                /**
+                 * shows all books in the notrealisedbookList arraylist
+                 */
                 case "5":
                     for (Book book1 : notrealisedbookList) {
                         System.out.println("Title: " + book1.getTitle() + " " + "Date: " + book1.getDate() + " " + "Id: " + book1.getId() + " " + "Author: " + book1.getAuthor() + " " + "Pages: " + book1.getNumberOfpages());
                     }
                     break;
+
+
 /**
- * explains all the menu options
+ * this code take you to  submenu where you can remove any book in the Book and AudioBook lists
  */
-
-
                 case "6":
 
                     System.out.println("What would it be Today?:"
@@ -322,7 +325,9 @@ public class LibrarySystem {
 
                     break;
 
-
+/**
+ * allows the user to sort the files in either arraylist
+ */
                 case "7":
                     System.out.println("What would it be Today?:"
 
@@ -355,7 +360,9 @@ public class LibrarySystem {
                             Collections.sort(audiobooks, sortAudioBookTitle);
                     }
                     break;
-
+/**
+ * saves the contents of the arraylist to the coresponding ser file
+ */
                 case "9":
                     writeObjects(books);
                     break;
@@ -364,19 +371,26 @@ public class LibrarySystem {
                     writeObjectss(audiobooks);
                     break;
 
-
+/**
+ * this allows the user to load the contents of the coresponding ser file into their arraylist
+ */
                 case "11":
                     readObjects(books);
                     break;
                 case "12":
                     readObjectss(audiobooks);
                     break;
+                /**
+                 * gives a short description of what each menu option do
+                 */
                 case "13":
                     for (String s : helps) {
                         System.out.println(s);
                     }
                     break;
-
+/**
+ * turns of the program
+ */
                 case "14":
                     System.out.println("Exiting Program");
                     continuetoorun = false;
